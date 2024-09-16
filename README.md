@@ -4,5 +4,9 @@ use g++ -o calculator calculator.cpp -lsfml-graphics -lsfml-window -lsfml-system
 
 also change the font directory for non-mac devices in the code
 
-the program is still in process
-![Screenshot 2024-09-16 at 14 16 17](https://github.com/user-attachments/assets/dd145a89-c132-4dcb-95c5-b921cf67a324)
+the program is complete
+
+![Screenshot 2024-09-16 at 21 44 52](https://github.com/user-attachments/assets/baa6a769-4d6b-4400-b55d-c00515f87934)
+
+
+
