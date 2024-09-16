@@ -33,15 +33,21 @@ int main(){
         window.draw(display);
 
         // Numbers and buttons
-        sf::RectangleShape buttons[16];
-        sf::Text number[16];
-        for (int i = 0; i < 16; i++) {
-            float verti = (float)i/4;
-            float xaxis = 55 + (i % 4) * (26 + 53);
-            float yaxis = display.getPosition().y + 142 + verti * 35;
-            buttons[i].setSize(sf::Vector2f(53, 43));
-            buttons[i].setPosition(sf::Vector2f(xaxis, yaxis));
-            buttons[i].setFillColor(sf::Color::White);
+        sf::RectangleShape buttons[18];
+        sf::Text number[18];
+
+        // Button dimensions and spacing
+        const int buttonWidth = 53;
+        const int buttonHeight = 43;
+        const int xspacing = 26;
+        const int yspacing = 35;
+
+        for (int i = 0; i < 18; i++){
+            int a = 55 + (i % 4) * (buttonWidth + xspacing);
+            int b = (35 + 107 + display.getPosition().y) + (i / 4) * (buttonHeight + yspacing);
+            buttons[i].setSize(sf::Vector2f(buttonWidth, buttonHeight));
+            buttons[i].setPosition(sf::Vector2f(a, b));
+            buttons[i].setFillColor(sf::Color::Green);
             buttons[i].setOutlineColor(sf::Color::Black);
             buttons[i].setOutlineThickness(2);
 
@@ -49,10 +55,20 @@ int main(){
             number[i].setCharacterSize(16);
             number[i].setFillColor(sf::Color::Black);
             number[i].setString(std::to_string(i));
-            number[i].setPosition(buttons[i].getPosition() + sf::Vector2f(30, 10));
+            number[i].setPosition(buttons[i].getPosition() + sf::Vector2f(20, 12));
+
+            //last 2 special buttons
+            if(i == 16){
+                buttons[i].setSize(sf::Vector2f(211, 43));
+            }
+            else if (i == 17) {
+                int a = 55 + 3 * (buttonWidth + xspacing);
+                buttons[i].setPosition(sf::Vector2f(a, b));
+                number[i].setPosition(buttons[i].getPosition() + sf::Vector2f(20, 12));
+            }
         }
         //display
-        for(int i = 0; i < 16; i++){
+        for(int i = 0; i < 18; i++){
             window.draw(buttons[i]);
             window.draw(number[i]);
         }
