@@ -41,7 +41,7 @@ int main(){
         const int buttonHeight = 43;
         const int xspacing = 26;
         const int yspacing = 35;
-
+        int n = 9;
         for (int i = 0; i < 18; i++){
             int a = 55 + (i % 4) * (buttonWidth + xspacing);
             int b = (35 + 107 + display.getPosition().y) + (i / 4) * (buttonHeight + yspacing);
@@ -54,9 +54,36 @@ int main(){
             number[i].setFont(font);
             number[i].setCharacterSize(16);
             number[i].setFillColor(sf::Color::Black);
-            number[i].setString(std::to_string(i));
             number[i].setPosition(buttons[i].getPosition() + sf::Vector2f(20, 12));
-
+            number[i].setString(std::to_string(i));
+            if(i != 3 && i != 7 && i != 11 && i != 13 && i != 14 && i != 15 && i != 16 && i != 17){
+                number[i].setString(std::to_string(n));
+                n--;
+            }
+            if(i == 3){
+                number[i].setString("/");
+            }
+            if(i == 7){
+                number[i].setString("x");
+            }
+            if(i == 11){
+                number[i].setString("-");
+            }
+            if(i == 13){
+                number[i].setString(".");
+            }
+            if(i == 14){
+                number[i].setString("C");
+            }
+            if(i == 15){
+                number[i].setString("+");
+            }
+            if(i == 16){
+                number[i].setString("Calculator");
+            }
+            if(i == 17){
+                number[i].setString("=");
+            }
             //last 2 special buttons
             if(i == 16){
                 buttons[i].setSize(sf::Vector2f(211, 43));
@@ -67,11 +94,13 @@ int main(){
                 number[i].setPosition(buttons[i].getPosition() + sf::Vector2f(20, 12));
             }
         }
+
         //display
         for(int i = 0; i < 18; i++){
             window.draw(buttons[i]);
             window.draw(number[i]);
         }
+
         window.display();
     }
 
